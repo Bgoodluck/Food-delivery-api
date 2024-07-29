@@ -16,7 +16,7 @@ dotenv.config();
 
 
 const app = express();
-const port = 4000;
+const port = 4000; 
 
 // Middleware
 app.use(express.json());
@@ -33,7 +33,7 @@ connectDB();
 
 app.use('/uploads', express.static('uploads'));
 
-// api endpoints
+
 app.use("/api/food", foodRouter);
 app.use("/api/restaurant", restaurantRouter); 
 app.use("/images", express.static('uploads'));
