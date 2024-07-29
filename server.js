@@ -22,7 +22,7 @@ const port = 4000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
-    origin: ["https://food-delivery-lovat-sigma.vercel.app", "http://localhost:5174"],
+    origin: ["https://food-delivery-lovat-sigma.vercel.app", "https://food-delivery-admin-green.vercel.app"],
     allowedHeaders: ["Content-Type", "Authorization", "token"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"], 
     credentials: true
