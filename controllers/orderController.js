@@ -13,7 +13,7 @@ if (!FLW_SECRET_KEY) {
     throw new Error("FLW_SECRET_KEY is not defined");
 }
 
-const frontend_url = "http://localhost:5173";
+const frontend_url = "https://food-delivery-lovat-sigma.vercel.app";
 
 
 const placeOrder = async (req, res) => {
