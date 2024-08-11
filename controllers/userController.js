@@ -113,8 +113,8 @@ import userModel from "../models/userModel.js";
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import validator from 'validator'
-import transporter from '../config/nodemailer.js'; // Import transporter
-import { v4 as uuidv4 } from 'uuid'; // Import uuid for generating tokens
+import transporter from '../config/nodemailer.js';
+import { v4 as uuidv4 } from 'uuid'; 
 
 
 const loginUser = async (req, res)=>{
@@ -167,33 +167,21 @@ const registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-<<<<<<< HEAD
-        const verificationToken = uuidv4(); 
-=======
-        const verificationToken = uuidv4(); // Generate a unique verification token
->>>>>>> 284ce2920a46db92fee7621b766dbc5adec9f2b2
+        const verificationToken = uuidv4();
 
         const newUser = new userModel({
             name,
             email,
             address,
             password: hashedPassword,
-<<<<<<< HEAD
             verificationToken, 
-=======
-            verificationToken, // Add verification token to user
->>>>>>> 284ce2920a46db92fee7621b766dbc5adec9f2b2
             isVerified: false
         });
 
         const user = await newUser.save();
         const token = createToken(user._id);
 
-<<<<<<< HEAD
         
-=======
-        // Send verification email
->>>>>>> 284ce2920a46db92fee7621b766dbc5adec9f2b2
         const verificationUrl = `${process.env.FRONTEND_URL}/api/email/verify/${verificationToken}`;
         const mailOptions = {
             from: process.env.EMAIL_USER,
