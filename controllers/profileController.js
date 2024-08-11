@@ -22,7 +22,11 @@ const getProfile = async (req, res) => {
             success: true, 
             profile: {
                 ...profile.toObject(),
+<<<<<<< HEAD
                 image: profile.image // to ensure image is included
+=======
+                image: profile.image // Ensure image is included
+>>>>>>> 284ce2920a46db92fee7621b766dbc5adec9f2b2
             }, 
             userDetails 
         });

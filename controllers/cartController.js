@@ -42,12 +42,17 @@ const removeFromCart = async (req, res)=>{
 
 const deleteFromCart = async (req, res) => {
     try {
+<<<<<<< HEAD
         
+=======
+        // Find the user by ID
+>>>>>>> 284ce2920a46db92fee7621b766dbc5adec9f2b2
         let userData = await userModel.findById(req.body.userId);
         if (!userData) {
             return res.status(404).json({ success: false, message: "User not found" });
         }
 
+<<<<<<< HEAD
         
         let cartData = userData.cartData;
 
@@ -57,6 +62,17 @@ const deleteFromCart = async (req, res) => {
             delete cartData[req.body.itemId];
             
             
+=======
+        // Extract the cart data
+        let cartData = userData.cartData;
+
+        // Check if the item exists in the cart
+        if (cartData[req.body.itemId] > 0) {
+            // Remove the item from the cart
+            delete cartData[req.body.itemId];
+            
+            // Update the user's cart in the database
+>>>>>>> 284ce2920a46db92fee7621b766dbc5adec9f2b2
             await userModel.findByIdAndUpdate(req.body.userId, { cartData });
             res.json({ success: true, message: "Removed from cart" });
         } else {
