@@ -167,11 +167,7 @@ const registerUser = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-<<<<<<< HEAD
         const verificationToken = uuidv4(); 
-=======
-        const verificationToken = uuidv4();
->>>>>>> b5d47854f62fc683e79d9e09a8e6d1e66e0d9388
 
         const newUser = new userModel({
             name,
