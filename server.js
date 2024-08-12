@@ -11,10 +11,13 @@ import dotenv from 'dotenv';
 import adminRouter from './routes/adminRoute.js';
 import restaurantRouter from './routes/restaurantRoute.js';
 import profileRouter from './routes/profileRoute.js';
+import emailRouter from './routes/emailRoute.js'; 
 
 dotenv.config();
 
-
+// food-delivery-api-cyj9.onrender.com
+// https://food-delivery-lovat-sigma.vercel.app
+// https://food-delivery-admin-green.vercel.app
 const app = express();
 const port = 4000; 
 
@@ -41,6 +44,7 @@ app.use("/api/user", userRouter);
 app.use("/api/cart", cartRouter);
 app.use("/api/order", orderRouter);                    // Admin panel to get orders and user order
 app.use('/api', profileRouter);
+app.use('/api/email', emailRouter);
 
 
 app.use('/api/admin', adminRouter);
