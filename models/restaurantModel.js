@@ -47,6 +47,9 @@ const restaurantSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    aka:{
+        type: String,
+    },
     menu: {
         type: String,
         required: true

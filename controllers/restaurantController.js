@@ -8,6 +8,7 @@ const addRestaurant = async (req, res) => {
      
     const restaurant = new restaurantModel({
      name: req.body.name,
+     aka: req.body.aka,
      menu: req.body.menu,
      address:req.body.address,
      operating_hours: req.body.operating_hours,
