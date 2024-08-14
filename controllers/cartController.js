@@ -81,4 +81,34 @@ const getCart = async (req, res)=>{
     }
 }
 
-export {addToCart, removeFromCart, deleteFromCart, getCart}
+const syncCartItems = async (req, res) => {
+    try {
+        const { userId, cartItems } = req.body;
+
+        let userData = await userModel.findById(userId);
+        if (!userData) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        let serverCart = userData.cartData || {};
+
+        for (let itemId in cartItems) {
+            if (cartItems.hasOwnProperty(itemId)) {
+                if (serverCart[itemId]) {
+                    serverCart[itemId] += cartItems[itemId];
+                } else {
+                    serverCart[itemId] = cartItems[itemId];
+                }
+            }
+        }
+
+        await userModel.findByIdAndUpdate(userId, { cartData: serverCart });
+
+       res.json({ success: true, cartData: serverCart });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ success: false, message: "Error syncing cart items" });
+    }
+}
+
+export {addToCart, removeFromCart, deleteFromCart, getCart, syncCartItems}
